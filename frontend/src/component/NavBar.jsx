@@ -24,7 +24,7 @@ class NavBar extends Component {
             <span id="toggle-switch"><Switch 
     checked={this.props.checked}
     onChange={this.props.handleChange}
-    onColor="#404e67"
+    onColor="#404e67" 
     onHandleColor="#ffffff"
     handleDiameter={10}
     uncheckedIcon={false}
