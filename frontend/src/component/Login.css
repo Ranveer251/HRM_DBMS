@@ -1,5 +1,5 @@
 body {
-  background-color: #2b447b;
+  background-color: #1b262c;
 }
 #root {
   height: auto;
@@ -54,7 +54,7 @@ body {
   margin: 0 auto;
 }
 .login-form-input[type="submit"] {
-  background-color: #395faf;
+  background-color: #0f4c75;
   border-width: 0px;
   margin-top: 15px;
   padding: 0px;

@@ -8,9 +8,6 @@ import NavBar from "../NavBar.jsx";
 import RoleForm from "../RoleForm.jsx";
 import Position from "../Position.jsx";
 import Department from "../Department.jsx";
-import Country from "../Country.jsx";
-import State from "../State.jsx";
-import City from "../City.jsx";
 import Company from "../Company.jsx";
 import Employee from "../Employee.jsx";
 import Salary from "../Salary.jsx";
@@ -43,15 +40,6 @@ function PositionF() {
 }
 function DepartmentF() {
   return <Department />;
-}
-function CountryF() {
-  return <Country />;
-}
-function StateF() {
-  return <State />;
-}
-function CityF() {
-  return <City />;
 }
 function CompanyF() {
   return <Company />;
@@ -217,21 +205,6 @@ class DashboardHR extends Component {
                   path="/hr/department"
                   exact
                   component={DepartmentF}
-                />
-                <Route
-                  path="/hr/country"
-                  exact
-                  component={CountryF}
-                />
-                <Route
-                  path="/hr/state"
-                  exact
-                  component={StateF}
-                />
-                <Route
-                  path="/hr/city"
-                  exact
-                  component={CityF}
                 />
                 <Route
                   path="/hr/leave-application-hr"

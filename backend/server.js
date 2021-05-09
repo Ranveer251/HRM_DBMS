@@ -4,12 +4,14 @@ var express = require("express"),
   Joi = require("joi"),
   app = express();
 jwt = require("jsonwebtoken");
+require('dotenv').config();
 
 //connecting to mongodb
 let mongoURI;
 if (!process.env.DATABASEURL) {
   // var config = require("./config.js");
-  mongoURI = "mongodb://localhost:27017/HRM";
+  // mongoURI = "mongodb://localhost:27017/HRM";
+  mongoURI = process.env.DATABASEURL;
 } else {
   mongoURI = process.env.DATABASEURL;
 }
@@ -93,15 +95,15 @@ var Employee = mongoose.model("Employee", employeeSchema);
 
 // Employee.create(
 //   {
-//     Email: "emp@gmail.com",
-//     Password: "emp",
-//     Account: 3,
-//     EmployeeCode: "3",
-//     ContactNo: "9999999988",
+//     Email: "hr@gmail.com",
+//     Password: "hr",
+//     Account: 2,
+//     EmployeeCode: "2",
+//     ContactNo: "9999999987",
 //     DateOfJoining: new Date(),
 //     DOB: new Date(),
-//     FirstName: "employee",
-//     LastName: "singh",
+//     FirstName: "hr",
+//     LastName: "hr",
 //     Gender: "M"
 //   },function(err,doc){
 //     if(err){
