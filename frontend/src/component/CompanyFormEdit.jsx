@@ -12,9 +12,6 @@ class CompanyFormEdit extends Component {
     stateData: [],
     cityData: [],
     filteredCountryData: [],
-    filteredStateData: [],
-    filteredCityData: [],
-
     CompanyNameData: this.props.editData["CompanyName"],
     AddressData: this.props.editData["Address"],
     PostalCodeData: this.props.editData["PostalCode"],
@@ -27,6 +24,7 @@ class CompanyFormEdit extends Component {
     GSTNoData: this.props.editData["GSTNo"],
     CINNoData: this.props.editData["CINNo"],
   };
+
   onCompanyNameDataChange(e) {
     this.setState({ CompanyNameData: e.target.value });
   }
@@ -63,51 +61,31 @@ class CompanyFormEdit extends Component {
 
 
   loadCountryInfo = () => {
+    // axios
+    //   .get(`${SERVER_URL}/api/country`, {
+    //     headers: {
+    //       authorization: localStorage.getItem("token") || ""
+    //     }
+    //   })
+    //   .then(response => {
+    //     this.setState({ countryData: response.data });
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   });
     axios
-      .get(`${SERVER_URL}/api/country`, {
-        headers: {
-          authorization: localStorage.getItem("token") || ""
-        }
+      .get('https://restcountries.eu/rest/v2/all')
+      .then(res => {
+        // console.log(res.data);
+        var data = res.data;
+        this.setState({countryData: data});
       })
-      .then(response => {
-        this.setState({ countryData: response.data });
-      })
-      .catch(error => {
-        console.log(error);
-      });
   };
-  loadStateInfo = () => {
-    axios
-      .get(`${SERVER_URL}/api/state`, {
-        headers: {
-          authorization: localStorage.getItem("token") || ""
-        }
-      })
-      .then(response => {
-        this.setState({ stateData: response.data });
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  };
-  loadCityInfo = () => {
-    axios
-      .get(`${SERVER_URL}/api/city`, {
-        headers: {
-          authorization: localStorage.getItem("token") || ""
-        }
-      })
-      .then(response => {
-        this.setState({ cityData: response.data });
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  };
+
   componentWillMount() {
     this.loadCountryInfo();
-    this.loadStateInfo();
-    this.loadCityInfo();
+    // this.loadStateInfo();
+    // this.loadCityInfo();
   }
   onCountryChange(e) {
     console.log(e.target.value);
@@ -184,46 +162,9 @@ class CompanyFormEdit extends Component {
                   <option value="" disabled selected>
                     Select your option
                   </option>
-                  {this.state.countryData.map((data, index) => (
-                    <option key={index} value={data["_id"]}>{data["CountryName"]}</option>
-                  ))}
-                </Form.Control>
-              </Col>
-            </Form.Group>
-
-            <Form.Group as={Row}>
-              <Form.Label column sm={2}>
-                State
-              </Form.Label>
-              <Col sm={10} className="form-input">
-                <Form.Control
-                  as="select"
-                  name="state"
-                  required
-                  onChange={this.onStateChange.bind(this)}
-                >
-                  <option value="" disabled selected>
-                    Select your option
-                  </option>
-                  {this.state.filteredStateData.map((data, index) => (
-                    <option key={index} value={data["_id"]}>{data["StateName"]}</option>
-                  ))}
-                </Form.Control>
-              </Col>
-            </Form.Group>
-
-            <Form.Group as={Row}>
-              <Form.Label column sm={2}>
-                City
-              </Form.Label>
-              <Col sm={10} className="form-input">
-                <Form.Control as="select" name="state" required>
-                  <option value="" disabled selected>
-                    Select your option
-                  </option>
-                  {this.state.filteredCityData.map((data, index) => (
-                    <option key={index} value={data["_id"]}>{data["CityName"]}</option>
-                  ))}
+                  {this.state.countryData.map((data, index) => 
+                    <option key={index} value={data.name}>{data.name}</option>
+                  )}
                 </Form.Control>
               </Col>
             </Form.Group>

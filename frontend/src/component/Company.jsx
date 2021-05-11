@@ -95,19 +95,19 @@ class Company extends Component {
   handleCompanyEditUpdate = (info, newInfo) => {
     newInfo.preventDefault();
     let body = {
-      CompanyName: newInfo.target[0].value,
-      Address: newInfo.target[1].value,
-      CityID: newInfo.target[4].value,
-      PostalCode: newInfo.target[5].value,
-      Website: newInfo.target[6].value,
-      Email: newInfo.target[7].value,
-      ContactPerson: newInfo.target[8].value,
-      ContactNo: newInfo.target[9].value,
-      FaxNo: newInfo.target[10].value,
-      PanNo: newInfo.target[11].value,
-      GSTNo: newInfo.target[12].value,
-      CINNo: newInfo.target[13].value,
-    };
+        CompanyName: newInfo.target[0].value,
+        Address: newInfo.target[1].value,
+        Country: newInfo.target[2].value, 
+        PostalCode: newInfo.target[3].value,
+        Website: newInfo.target[4].value,
+        Email: newInfo.target[5].value,
+        ContactPerson: newInfo.target[6].value,
+        ContactNo: newInfo.target[7].value,
+        FaxNo: newInfo.target[8].value,
+        PanNo: newInfo.target[9].value,
+        GSTNo: newInfo.target[10].value,
+        CINNo: newInfo.target[11].value
+      };
     console.log("update", body);
     axios
       .put(

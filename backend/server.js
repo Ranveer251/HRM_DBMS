@@ -38,9 +38,12 @@ mongoose.set("useNewUrlParser", true);
 mongoose.set("useFindAndModify", false);
 mongoose.set("useCreateIndex", true);
 mongoose
-  .connect(mongoURI)
-  .then(() => console.log("db connection successful"))
-  .catch(err => console.log(err));
+  .connect(mongoURI,{
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    })
+  .then(() => {console.log("db connection successful")})
+  .catch(()=>{console.log("error hai bhai")});
 
 // Create mongo connection
 const conn = mongoose.createConnection(mongoURI);
@@ -1128,7 +1131,7 @@ app.put("/api/company/:id", verifyHR, (req, res) => {
       newCompany = {
         CompanyName: req.body.CompanyName,
         Address: req.body.Address,
-        city: req.body.CityID,
+        Country: req.body.Country,
         PostalCode: req.body.PostalCode,
         Website: req.body.Website,
         Email: req.body.Email,
