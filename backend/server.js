@@ -539,6 +539,7 @@ const ProjectValidation = Joi.object().keys({
 var companySchema = new mongoose.Schema({
   CompanyName: { type: String, required: true },
   Address: { type: String, required: true },
+  Country: {type: String},
   PostalCode: { type: Number, required: true },
   Website: { type: String, required: true },
   Email: { type: String, required: true },
@@ -548,8 +549,7 @@ var companySchema = new mongoose.Schema({
   PanNo: { type: String, required: true },
   GSTNo: { type: String, required: true },
   CINNo: { type: String, required: true },
-  Deleted: { type: Boolean },
-  Country: {type: String}
+  Deleted: { type: Boolean }
 });
 
 var Company = mongoose.model("Company", companySchema);
@@ -561,6 +561,9 @@ const CompanyValidation = Joi.object().keys({
     .required(),
   Address: Joi.string()
     .max(2000)
+    .required(),
+  Country: Joi.string()
+    .max(100)
     .required(),
   PostalCode: Joi.number()
     .max(999999)
@@ -589,10 +592,7 @@ const CompanyValidation = Joi.object().keys({
   CINNo: Joi.string()
     .max(200)
     .required(),
-  Deleted: Joi.optional(),
-  Country: Joi.string()
-    .max(100)
-    .required()
+  Deleted: Joi.optional()
 });
 
 app.get("/api/role", verifyAdminHR, (req, res) => {
@@ -1123,7 +1123,7 @@ app.post("/api/company", verifyHR, (req, res) => {
 app.put("/api/company/:id", verifyHR, (req, res) => {
   Joi.validate(req.body, CompanyValidation, (err, result) => {
     if (err) {
-      console.log(err);
+      console.log("here"+err);
       res.status(400).send(err.details[0].message);
     } else {
       let newCompany;

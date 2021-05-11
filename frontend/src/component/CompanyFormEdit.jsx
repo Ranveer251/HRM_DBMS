@@ -9,8 +9,6 @@ class CompanyFormEdit extends Component {
 
     status: "",
     countryData: [],
-    stateData: [],
-    cityData: [],
     filteredCountryData: [],
     CompanyNameData: this.props.editData["CompanyName"],
     AddressData: this.props.editData["Address"],
@@ -89,21 +87,13 @@ class CompanyFormEdit extends Component {
   }
   onCountryChange(e) {
     console.log(e.target.value);
-    let currentCountry = e.target.value;
+    // let currentCountry = e.target.value;
 
-    let filteredState = this.state.stateData.filter(
-      data => data["country"][0]["_id"] == currentCountry
-    );
-    this.setState({ filteredStateData: filteredState });
+    // let filteredState = this.state.stateData.filter(
+    //   data => data["country"][0]["_id"] == currentCountry
+    // );
+    // this.setState({ filteredStateData: filteredState });
 
-  }
-  onStateChange(e) {
-    console.log(e.target.value);
-    let currentState = e.target.value;
-    let filteredCity = this.state.cityData.filter(
-      data => data["state"][0]["_id"] == currentState
-    );
-    this.setState({ filteredCityData: filteredCity });
   }
 
   render() {
@@ -163,7 +153,9 @@ class CompanyFormEdit extends Component {
                     Select your option
                   </option>
                   {this.state.countryData.map((data, index) => 
-                    <option key={index} value={data.name}>{data.name}</option>
+                    <option key={index} value={data.name} selected={this.props.editData.Country == data.name}>
+                      {data.name}  
+                    </option>
                   )}
                 </Form.Control>
               </Col>

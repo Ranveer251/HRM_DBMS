@@ -112,7 +112,7 @@ class RoleTable extends Component {
     console.log(e);
     if (window.confirm("Are you sure to delete this record ? ") == true) {
       axios
-        .delete(`${SERVER_URL}/api/role` + e, {
+        .delete(`${SERVER_URL}/api/role/` + e, {
           headers: {
             authorization: localStorage.getItem("token") || ""
           }

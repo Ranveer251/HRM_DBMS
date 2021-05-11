@@ -111,7 +111,7 @@ class DepartmentTable extends Component {
     console.log(e);
     if (window.confirm("Are you sure to delete this record ? ") == true) {
       axios
-        .delete(`${SERVER_URL}/api/department` + e, {
+        .delete(`${SERVER_URL}/api/department/` + e, {
           headers: {
             authorization: localStorage.getItem("token") || ""
           }

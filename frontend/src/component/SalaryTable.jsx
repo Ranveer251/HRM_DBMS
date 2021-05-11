@@ -155,7 +155,7 @@ class AdminSalaryTable extends Component {
     console.log(e);
     if (window.confirm("Are you sure to delete this record? ") == true) {
       axios
-        .delete(`${SERVER_URL}/api/salary` + e, {
+        .delete(`${SERVER_URL}/api/salary/` + e, {
           headers: {
             authorization: localStorage.getItem("token") || ""
           }

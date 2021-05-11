@@ -110,7 +110,7 @@ class PositionTable extends Component {
     console.log(e);
     if (window.confirm("Are you sure to delete this record ? ") == true) {
       axios
-        .delete(`${SERVER_URL}/api/position` + e, {
+        .delete(`${SERVER_URL}/api/position/` + e, {
           headers: {
             authorization: localStorage.getItem("token") || ""
           }

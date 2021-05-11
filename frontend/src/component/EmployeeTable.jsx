@@ -215,8 +215,9 @@ class AdminEmployeeTable extends Component {
             PositionName: data["position"][0]["PositionName"],
             DateOfJoining: data["DateOfJoining"].slice(0, 10)
           };
-
+          if(temp.Account==="Employee"){
           this.rowDataT.push(temp);
+          }
         });
         this.setState({ rowData: this.rowDataT });
       })
