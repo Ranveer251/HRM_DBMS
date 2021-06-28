@@ -114,7 +114,7 @@ var Employee = mongoose.model("Employee", employeeSchema);
 //     } else{
 //       console.log("created");
 //     }
-//   }
+//   } 
 // );
 
 const EmployeeValidation = Joi.object().keys({
